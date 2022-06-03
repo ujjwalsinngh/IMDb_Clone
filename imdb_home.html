@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>IMDB Clone</title>
+
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<link rel="stylesheet" type="text/css" href="imdb_home.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+		integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+		
+
+	</head>
+
+	<body>
+
+		<div class="nav-bar">
+
+			<span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png" class="logo"></span>
+
+			<span id="menu">
+				<i class="fa-solid fa-bars"></i>
+				<span id="menu-text">Menu</span>
+			</span>
+
+			<input class="nav-bar-drop-down" type="checkbox" id="dropdown" name="dropdown"/>
+			<label class="for-dropdown" for="dropdown">All <span id="sort-down"><i class="fa-solid fa-sort-down"></i></span></label>
+
+			<!-- <select name="All" class="nav-bar-drop-down">
+				<option value="All"></option>
+				<option value="Titles"></option>
+				<option value="TV Episode"></option>
+				<option value="Celebs"></option>
+				<option value="Companies"></option>
+				<option value="Keywors"></option>
+			</select>
+ -->
+ 			<input type="text" id="searchBox" name="newTask" placeholder="Search IMDb">
+
+ 			<span class="search-icon"><i class="fa-regular fa-magnifying-glass"></i></span>
+
+ 			<span><img src="https://m.media-amazon.com/images/G/01/imdbpro/logos/IMDbPro-logo-primary-reversed._CB1513032401_.png" class="pro-logo"></span>
+
+ 			<span id="login-data">
+ 				<span class="watchlist">
+ 					<i class="fa-solid fa-bookmark"></i>
+					<span id="watchlist-text">Watchlist</span>
+ 				</span>
+
+				<span id="sign-in">Sign In</span>
+
+				<span class="language">
+					<span id="language-text">EN</span>
+					<span id="language-sort-down"><i class="fa-solid fa-sort-down"></i></span>
+				</span>
+					
+			</span>
+
+		</div>
+
+		<div class="ads-section"></div>
+
+		<div id="carouselID" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active" data-interval="5000">
+					<img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="First slide"/>
+				</div>
+				<div class="carousel-item" data-interval="5000">
+					<img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Second slide"/>
+				</div>
+				<div class="carousel-item" data-interval="5000">
+					<img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-50" alt="Third slide"/>
+				</div>
+			</div>
+			<a class="carousel-control-prev" href="#carouselID" role="button" data-slide="prev"><!-- <i class="fa-solid fa-angle-left"></i> -->
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only"></span>
+			</a>
+			<a class="carousel-control-next" href="#carouselID" role="button" data-slide="next"><!-- <i class="fa-solid fa-angle-right"></i> -->
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only"></span>
+			</a>
+			<!-- <h1>This is a moving carousel.</h1> -->
+		</div>
+
+	</body>
+
+
+</html>
+
+
