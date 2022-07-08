@@ -26,7 +26,7 @@
 
 		<div class="nav-bar">
 
-			<span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png" class="logo"></span>
+			<span onclick="redirectToHome()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png" class="logo"></span>
 
 			<span id="menu">
 				<i class="fa-solid fa-bars"></i>
@@ -46,13 +46,13 @@
 			</select>
  -->
  			<input type="text" id="searchBox" name="newTask" placeholder="Search IMDb">
-
- 			<span class="search-icon"><i class="fa-regular fa-magnifying-glass"></i></span>
+ 			<div class="search-list" id="search-list"></div>
+ 			<span class="search-icon" id="search"><i class="fa-regular fa-magnifying-glass"></i></span>
 
  			<span><img src="https://m.media-amazon.com/images/G/01/imdbpro/logos/IMDbPro-logo-primary-reversed._CB1513032401_.png" class="pro-logo"></span>
 
  			<span id="login-data">
- 				<span class="watchlist">
+ 				<span class="watchlist" onclick="getFavourites()">
  					<i class="fa-solid fa-bookmark"></i>
 					<span id="watchlist-text">Watchlist</span>
  				</span>
@@ -80,23 +80,31 @@
 			</ol> -->
 
 
-			<div class="carousel-inner">
+			<div class="carousel-inner" id="carousel">
 				<div class="item active">
-					<img src="https://assets.telegraphindia.com/telegraph/7d06fc10-6795-41bd-866c-f273d8717811.jpg">
+					<img class="item-slide-image" id="item-first-slide" src="https://stat2.bollywoodhungama.in/wp-content/uploads/2017/09/War-4-1.jpg">
 					<!-- <div class="blurr-effect"> </div> -->
 					<div class="carousel-captions">
 						<span class="poster"><img src="https://upload.wikimedia.org/wikipedia/en/6/6f/War_official_poster.jpg"></span>
+						<div class="poster-add-to-favourites" id="War-ID" onclick="addToFavourites(this)">
+							<span><i class="fa-solid fa-bookmark"></i></span>
+							<span class="poster-add-to-favourites-plus"><i class="fa-solid fa-plus"></i></span>
+						</div>
 						<h1 class="play-button"><i class="fa-regular fa-circle-play"></i></h1>
 						<span class="carousel-item-data">
-							Kabir has gone Rogue
+							Kabir has gone 'Rogue'
 							<h4 class="watch-trailer">Watch the Trailer</h4>
 						</span>
 					</div>
 				</div>
 				<div class="item">
-					<img src="https://stat2.bollywoodhungama.in/wp-content/uploads/2016/03/88801916.jpg"  alt="Second slide" width="900" height="100">
+					<img id="item-second-slide" src="https://stat1.bollywoodhungama.in/wp-content/uploads/2016/03/89684728.jpg"  alt="Second slide" width="900" height="100">
 					<div class="carousel-captions">
 						<span class="poster"><img src="https://upload.wikimedia.org/wikipedia/en/9/90/Bang_Bang_%282014_Film%29.jpg"></span>
+						<div class="poster-add-to-favourites" id="Bang-Bang-ID" onclick="addToFavourites(this)">
+							<span><i class="fa-solid fa-bookmark"></i></span>
+							<span class="poster-add-to-favourites-plus"><i class="fa-solid fa-plus"></i></span>
+						</div>
 						<h1 class="play-button"><i class="fa-regular fa-circle-play"></i></h1>
 						<span class="carousel-item-data">
 							5 4 3 2 1 .... Bang Bang!
@@ -105,73 +113,94 @@
 					</div>
 				</div>
 				<div class="item">
-					<img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"  alt="Third slide">
+					<img id="item-third-slide" src="https://www.firstpost.com/wp-content/uploads/2019/06/super-30-basanti-no-dance.jpg"  alt="Third slide">
 					<div class="carousel-captions">
-						<span class="poster">Poster</span>
+						<span class="poster"><img src="https://media2.bollywoodhungama.in/wp-content/uploads/2018/09/Super-30-1.jpg"></span>
+						<div class="poster-add-to-favourites" id="super-30-ID" onclick="addToFavourites(this)">
+							<span><i class="fa-solid fa-bookmark"></i></span>
+							<span class="poster-add-to-favourites-plus"><i class="fa-solid fa-plus"></i></span>
+						</div>
 						<h1 class="play-button"><i class="fa-regular fa-circle-play"></i></h1>
 						<span class="carousel-item-data">
-							<h1>Movie Name</h1>
-							<h4 class="watch-trailer">Watch Trailer</h4>
+							India lagayega 'chhalaang'
+							<h4 class="watch-trailer">Watch the Trailer</h4>
 						</span>
 					</div>
 				</div>
 			</div>
+		</a>
 
 
 			<div class="carousel-controls">
-				<a class="carousel-control-prev" href="#carouselID" role="button" data-slide="prev"><!-- <i class="fa-solid fa-angle-left"></i> -->
+				<a class="carousel-control-prev" href="#carouselID" role="button" data-slide="prev"> <!-- <i class="fa-solid fa-angle-left"></i> -->
 					<span class="glyphicon glyphicon-chevron-left"></span>
 					<span class="sr-only">Previous</span>
 				</a>
-				<a class="carousel-control-next" href="#carouselID" role="button" data-slide="next"><!-- <i class="fa-solid fa-angle-right"></i> -->
+				<a class="carousel-control-next" href="#carouselID" role="button" data-slide="next"> <!-- <i class="fa-solid fa-angle-right"></i> -->
 					<span class="glyphicon glyphicon-chevron-right"></span>
 					<span class="sr-only">Next</span>
 				</a>
 			</div>
-			<!-- <h1>This is a moving carousel.</h1> -->
+			
 		</div>
+
 		<div class="up-next">
-			<div id="up-next-text"><h4>Up next</h4></div>
+			<div id="up-next-text">Up next</div>
 			<div>
 				<ul id="up-next-list">
 					<li>
-						<span class="up-next-list-poster">Poster</span>
-						<i class="fa-regular fa-circle-play"></i>
+						<span><img class="up-next-poster" src="https://upload.wikimedia.org/wikipedia/en/6/6f/War_official_poster.jpg"></span>
 						<span class="up-next-list-data">
-							<h3>Movie Name</h1>
-							<h4>Watch Trailer</h4>
+							<span class="up-next-play-button"><i class="fa-regular fa-circle-play"></i></span>
+							<span class="up-next-list-text">
+								Kabir has gone 'Rogue' <br>
+								<span class="up-next-list-watch-trailer">Watch Trailer</span>
+							</span>
 						</span>
 					</li>
 
 					<li>
-						<span class="up-next-list-poster">Poster</span>
-						<i class="fa-regular fa-circle-play"></i>
+						<span><img class="up-next-poster" src="https://upload.wikimedia.org/wikipedia/en/9/90/Bang_Bang_%282014_Film%29.jpg"></span>
 						<span class="up-next-list-data">
-							<h3>Movie Name</h1>
-							<h4>Watch Trailer</h4>
+							<span class="up-next-play-button"><i class="fa-regular fa-circle-play"></i></span>
+							<span class="up-next-list-text">
+								5 4 3 2 1 .... Bang Bang!<br>
+								<span class="up-next-list-watch-trailer">Watch Trailer</span>
+							</span>
 						</span>
 					</li>
 
 					<li>
-						<span class="up-next-list-poster">Poster</span>
-						<i class="fa-regular fa-circle-play"></i>
+						<span><img class="up-next-poster" src="https://media2.bollywoodhungama.in/wp-content/uploads/2018/09/Super-30-1.jpg"></span>
 						<span class="up-next-list-data">
-							<h3>Movie Name</h1>
-							<h4>Watch Trailer</h4>
+							<span class="up-next-play-button"><i class="fa-regular fa-circle-play"></i></span>
+							<span class="up-next-list-text">
+								India lagayega 'chhalaang' <br>
+								<span class="up-next-list-watch-trailer">Watch Trailer</span>
+							</span>
+
 						</span>
 					</li>
 				</ul>
 			</div>
 			<div id="browse-trailer-text"><h4>Browse trailers <i class="fa-solid fa-angle-right"></i></h4></div>
 
-
 		</div>
+
+		
 
 		<!-- div class="carousel-caption">
 			<h1>Movie Name</h1>
 			<h2>Watch Trailer></h2>
 		</div>
  -->
+
+
+ 	<div id="result-grid">
+ 		
+ 	</div>
+
+ 	<script type="text/javascript" src="imdb_home.js"></script>
 	</body>
 
 
