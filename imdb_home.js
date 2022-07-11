@@ -193,7 +193,7 @@ function addToFavourites(ele){
 // function triggered when clicked on watchList container in Header
 function getFavourites(){
 
-	window.open("file:///Users/ujjwalsingh/Desktop/Sublime/IMDB/imdb_favourites.html", '_self');
+	window.open("file:///Users/ujjwalsingh/Desktop/Sublime/IMDB/imdb_favourites_page.html", '_self');
 }
 
 // on load of favourites page
