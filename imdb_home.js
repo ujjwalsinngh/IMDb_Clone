@@ -1,7 +1,8 @@
+
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
-
+// function triggered when clicked on search icon
 search.onclick = function(){
 	let searchedTerm = document.getElementById("searchBox").value;
 	
@@ -13,6 +14,7 @@ search.onclick = function(){
 	}
 }
 
+// function to load movies from search box
 async function loadMovies(searchedTerm){
 	// alert(searchedTerm);
 
@@ -28,9 +30,9 @@ async function loadMovies(searchedTerm){
 	}
 }
 
+//function to display available movies with searched keyword
 function displayMovieList(movies){
 	// alert(movies);
-	// searchBox.value = "";
 	for(let idx = 0; idx < movies.length; idx++){
 		let movieListItem = document.createElement('div');
 		movieListItem.dataset.id = movies[idx].imdbID;
@@ -59,7 +61,7 @@ function displayMovieList(movies){
 }
 
 
-
+// function to load movies
 function loadMovieDetails(){
 	const searchListMovies = searchList.querySelectorAll('.search-list-item');
 	// alert(searchListMovies);
@@ -77,6 +79,7 @@ function loadMovieDetails(){
 	// alert(searchListMovies); 
 }
 
+// function to display movies & redirect to movies-page
 function displayMovieDetails(movdetails){
 	
 	var obj = JSON.stringify(movdetails);
@@ -85,7 +88,7 @@ function displayMovieDetails(movdetails){
 	
 }
 
-
+// function to show movie details on movie page
 function getMovieDetailsOnMoviePage(){
 	var result = localStorage.getItem("movieKey");
 	var details = JSON.parse(result);
@@ -116,10 +119,11 @@ function getMovieDetailsOnMoviePage(){
 	`;
 }
 
-function watchlist(){
-	window.open("file:///Users/ujjwalsingh/Desktop/Sublime/IMDB/imdb_favourites.html", '_self');
-}
+// function watchlist(){
+// 	window.open("file:///Users/ujjwalsingh/Desktop/Sublime/IMDB/imdb_favourites.html", '_self');
+// }
 
+// function to redirect user to home of website
 function redirectToHome(){
 	// alert(this.id);
 	window.open("file:///Users/ujjwalsingh/Desktop/Sublime/IMDB/imdb_home.html", '_self');
@@ -127,95 +131,143 @@ function redirectToHome(){
 }
 
 
-
+// function to add a movie to favourites list
 function addToFavourites(ele){
+	// alert(ele.id);
 
-	let oneTimer = localStorage.getItem("favour8");
-
-	if(oneTimer == null){
-		// var arr = [];
-		// arr.push(ele.id);
-		// localStorage.setItem("favour8", JSON.stringify(arr));
-		// alert("len");
+	if(ele.id == "War-ID" || ele.id == "Bang-Bang-ID" || ele.id == "super-30-ID"){
+		alert("Search from Search Box. This carousel is just a show component.");
 	}else{
-		var array = localStorage.getItem("favour8");
-		if(array){
-			var favArray = JSON.parse(array);
-			const addedToFavourites = document.getElementById('bookmark-plus-icon');
-			if(!favArray.includes(ele.id)){
-				favArray.push(ele.id);
-				localStorage.setItem("favour8", JSON.stringify(favArray));
+		let oneTimer = localStorage.getItem("favour8");
 
-				// addedToFavourites.style.backgroundColor = 'red';
-				// addedToFavourites.style.opacity = 1;
-				// addedToFavourites.innerHTML = '-';
-				// addedToFavourites.style.size = "17px";
-				alert(ele.id);
-				alert("Added to Favourites");
-			}else{
-				// remove from favourites
-
-				for(let index=0; index<favArray.length; index++){
-					if(favArray[index] == ele.id){
-						favArray.splice(index, 1);
-						localStorage.setItem("favour8", JSON.stringify(favArray));
-
-						// addedToFavourites.style.backgroundColor = 'lightgrey';
-						// addedToFavourites.style.opacity = 0.4;
-						alert(ele.id);
-						alert("Removed from Favourites");
-					}
-				}
-			}
-			
+		if(oneTimer == null){
+			// var arr = [];
+			// arr.push(ele.id);
+			// localStorage.setItem("favour8", JSON.stringify(arr));
+			// alert("len");
 		}else{
-			var favouritesArray = [];
-			favouritesArray.push(ele.id);
-			localStorage.setItem("favour8", JSON.stringify(favouritesArray));
-			alert("here");
+			var array = localStorage.getItem("favour8");
+			if(array){
+				var favArray = JSON.parse(array);
+				// const addedToFavourites = document.getElementById('bookmark-plus-icon');
+				if(!favArray.includes(ele.id)){
+					favArray.push(ele.id);
+					localStorage.setItem("favour8", JSON.stringify(favArray));
+
+					// addedToFavourites.style.backgroundColor = 'red';
+					// addedToFavourites.style.opacity = 1;
+					// addedToFavourites.innerHTML = '-';
+					// addedToFavourites.style.size = "17px";
+					// alert(ele.id);
+
+					alert("Added to Favourites");
+				}else{
+					alert("Already added to Favourites");
+
+					// remove from favourites from same button (Bookmark Button)
+
+					// for(let index=0; index<favArray.length; index++){
+					// 	if(favArray[index] == ele.id){
+					// 		favArray.splice(index, 1);
+					// 		localStorage.setItem("favour8", JSON.stringify(favArray));
+
+					// 		// addedToFavourites.style.backgroundColor = 'lightgrey';
+					// 		// addedToFavourites.style.opacity = 0.4;
+					// 		alert(ele.id);
+					// 		alert("Removed from Favourites");
+					// 	}
+					// }
+				}
+			
+			}else{
+				var favouritesArray = [];
+				// favouritesArray.push(ele.id);
+				localStorage.setItem("favour8", JSON.stringify(favouritesArray));
+				// alert("here");
+			}
 		}
 	}
 }
 
 
-
+// function triggered when clicked on watchList container in Header
 function getFavourites(){
 
 	window.open("file:///Users/ujjwalsingh/Desktop/Sublime/IMDB/imdb_favourites.html", '_self');
+}
 
+// on load of favourites page
+async function favouritePageFunction(){
 	let favouritesList = document.getElementById("movie-container");
 
 	var favMovies = JSON.parse(localStorage.getItem('favour8'));
-	alert(favMovies.length);
-
-	favMovies.splice(0, 1);
-	// for(let index=0; index<=favMovies.length; index++){
-	// 	// let favouritesListItem = document.createElement("li");
-	// 	// alert(index);
-	// 	loadMoviesonFavouritesPage(favMovies[index]);
-	// }
-
+	
 	for(element of favMovies){
-		loadMoviesonFavouritesPage(element);
+		// alert(element);
+		loadMovieOnFavouritesPage(element);
 	}
 }
 
 
-
-async function loadMoviesonFavouritesPage(passedID){
+// function to load Movie on Favourites Page
+async function loadMovieOnFavouritesPage(passedID){
 
 	let url = `https://omdbapi.com/?i=${passedID}&apikey=fc7888b3&t`;
-	alert(url);
+	// alert(url);
 
 
 	let response = await fetch(`${url}`);
-	alert(JSON.stringify(response));
+	// alert(JSON.stringify(response));
 	let dataa = await response.json();
-	alert(JSON.stringify(dataa));
+	// alert(JSON.stringify(dataa));
 
 	if(dataa.Response == "True"){
-		// alert(JSON.stringify(dataa));
-		// displayFavouritesMovieList(data.Search);
+		addFavoriteToList(dataa);
 	}
 }
+
+// function to add a movie to favourites
+function addFavoriteToList(data){
+	let list = document.getElementById('favourites-list');
+	let listItem = document.createElement('li');
+	listItem.id = data.imdbID;
+
+	let favMovPoster = document.createElement('img');
+	favMovPoster.src = data.Poster;
+	favMovPoster.id = 'favMoviePoster';
+
+	var deleteButton = document.createElement("input");
+	deleteButton.setAttribute("type", "button");
+	deleteButton.id = 'remove';
+	deleteButton.value = '-'
+	// alert("delete");
+	// alert(data.imdbID);
+	deleteButton.name = data.imdbID;
+
+
+	listItem.append(favMovPoster, data.Title, deleteButton);
+	list.appendChild(listItem);
+
+
+
+	// function to delete favourite movie on basis of clicked delete button (deleteButton's id mapped with movie's imdbID) 
+	deleteButton.onclick = function() {
+
+		var array = localStorage.getItem("favour8");
+		var favArray = JSON.parse(array);
+		// alert(favArray.length);
+
+		// alert(deleteButton.name);
+		for(let index=0; index<favArray.length; index++){
+			if(favArray[index] == deleteButton.name){
+				// alert(index);
+				favArray.splice(index, 1);
+				localStorage.setItem("favour8", JSON.stringify(favArray));
+			}
+		}
+		document.getElementById(deleteButton.name).remove();
+		alert("Removed from Favourites");
+	}
+}
+
 
